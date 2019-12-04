@@ -1,7 +1,8 @@
 # PoSH-OpsGenieV2
 ### OpsGenie Powershell APIv2 Wrapper.
+, 
+For all companies and teams that are utilizing OpsGenie as their alerting system, this module is a great helper which will help you to create, retrieve and manage OpsGenie Alerts.
 
-For all companies and teams that are utilizing OpsGenie as their alerting system, this module is a great helper.
 Some of the common applicable situations for the use:
   1. Integration with your own monitoring system, sending alerts via Powershell to OpsGenie.
   2. Integration with existing Powershell code, like the functions running on Microsoft Azure.
