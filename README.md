@@ -13,6 +13,8 @@ Some of the common applicable situations for the use:
 Copy-Item -Recurse PoSH-OpsGeniev2 -Destination $PSHome\Modules\
 Import-Module PoSH-OpsGeniev2
 ```
+### Current list of functions
+#### New-OpsGenieAlert
 ### Disclaimer:
   The module is still in its early stage, we're trying to develop every function thoroughly and carefully as possible.
 
