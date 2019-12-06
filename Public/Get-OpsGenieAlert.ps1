@@ -2,16 +2,16 @@ Function Get-OpsGenieAlert {
     [CmdletBinding()]
     param (
         # Parameter help description
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [ValidateNotNullOrEmpty()]
         [string[]]$AlertID,
         # Parameter help description
-        [Parameter(Mandatory=$true)]
+        [Parameter(Mandatory = $true)]
         [ValidateNotNullOrEmpty()]
         [string]$ApiKey,
         # Parameter help description
-        [Parameter(Mandatory=$true)]
-        [ValidateSet('ID','TinyID','Alias')]
+        [Parameter(Mandatory = $true)]
+        [ValidateSet('ID', 'TinyID', 'Alias')]
         [string]$IDType
     )
     process {
@@ -26,23 +26,25 @@ Function Get-OpsGenieAlert {
             ContentType = 'application/json'
         }
         foreach ($Alert in $AlertID) {
-            if ($IDType -eq 'ID') {
-                $Uri = $Uri + "$($Alert)?identifierType=id"
-                $RestSplat.Add('Uri',$Uri)
-                $Data = Invoke-RestMethod @RestSplat
-                $Data.data
-            }
-            if ($IDType -eq 'TinyID') {
-                $Uri = $Uri + "$($Alert)?identifierType=tiny"
-                $RestSplat.Add('Uri',$Uri)
-                $Data = Invoke-RestMethod @RestSplat
-                $Data.data
-            }
-            if ($IDType -eq 'Alias') {
-                $Uri = $Uri + "$($Alert)?identifierType=alias"
-                $RestSplat.Add('Uri',$Uri)
-                $Data = Invoke-RestMethod @RestSplat
-                $Data.data
+            switch ($IDType) {
+                'ID' {
+                    $Uri = $Uri + "$($Alert)?identifierType=id"
+                    $RestSplat.Add('Uri', $Uri)
+                    $Data = Invoke-RestMethod @RestSplat
+                    $Data.data
+                }
+                'TinyID' {
+                    $Uri = $Uri + "$($Alert)?identifierType=tiny"
+                    $RestSplat.Add('Uri', $Uri)
+                    $Data = Invoke-RestMethod @RestSplat
+                    $Data.data
+                }
+                'Alias' {
+                    $Uri = $Uri + "$($Alert)?identifierType=alias"
+                    $RestSplat.Add('Uri', $Uri)
+                    $Data = Invoke-RestMethod @RestSplat
+                    $Data.data
+                }
             }
         }
     }
