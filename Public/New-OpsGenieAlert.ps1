@@ -202,7 +202,7 @@ Function New-OpsGenieAlert {
             }
             $Body | Add-Member -MemberType NoteProperty -Name 'details' -Value $DetailsHash
         }
-        $SingleParameters = 'entity','source','priority','user','note','description'
+        $SingleParameters = 'entity','source','priority','user','note','description','alias'
         foreach ($Item in $SingleParameters) {
             $ErrorActionPreference = 'SilentlyContinue'
             if ($PSBoundParameters.$($Item)) {
