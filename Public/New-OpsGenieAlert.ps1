@@ -202,7 +202,7 @@ Function New-OpsGenieAlert {
             }
             $Body | Add-Member -MemberType NoteProperty -Name 'details' -Value $DetailsHash
         }
-        $SingleParameters = 'entity','source','priority','user','note','description','alias'
+        $SingleParameters = 'entity', 'source', 'priority', 'user', 'note', 'description', 'alias'
         foreach ($Item in $SingleParameters) {
             $ErrorActionPreference = 'SilentlyContinue'
             if ($PSBoundParameters.$($Item)) {
@@ -220,6 +220,7 @@ Function New-OpsGenieAlert {
             Body        = $ToSend
             Headers     = $Headers
             ContentType = 'application/json'
+            UseBasicParsing = $true
         }
         [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
         Invoke-WebRequest @RestSplat
